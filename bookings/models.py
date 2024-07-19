@@ -30,7 +30,7 @@ class TimeSlot(models.Model):
 class Booking(models.Model):
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
 	room = models.ForeignKey(Room, on_delete=models.CASCADE)
-	date = models.DateField
+	date = models.DateField()
 	time_slot = models.ForeignKey(TimeSlot, on_delete=models.CASCADE)
 
 	class Meta:
