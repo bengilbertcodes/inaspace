@@ -9,6 +9,7 @@ class Room(models.Model):
 		('rehearsal', 'Rehearsal'),
 	]
 
+	room_id = models.AutoField(primary_key=True)
 	room_number = models.CharField(max_length=10, unique=True)
 	capacity = models.PositiveIntegerField()
 	is_available = models.BooleanField(default=True)
@@ -22,6 +23,7 @@ class Room(models.Model):
 		return f"{self.room_name} ({self.room_number}) - {self.get_room_type_display()}"
 
 class Booking(models.Model):
+	booking_id = models.AutoField(primary_key=True)
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
 	room = models.ForeignKey(Room, on_delete=models.CASCADE)
 	start_time = models.DateTimeField()
