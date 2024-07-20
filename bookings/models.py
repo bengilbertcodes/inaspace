@@ -9,7 +9,7 @@ class Room(models.Model):
 		('rehearsal', 'Rehearsal'),
 	]
 
-	room_number = models.Charfield(max_length=10, unique=True)
+	room_number = models.CharField(max_length=10, unique=True)
 	capacity = models.PositiveIntegerField()
 	is_available = models.BooleanField(default=True)
 	room_type = models.CharField(
