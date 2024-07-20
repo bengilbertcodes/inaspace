@@ -42,14 +42,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    # 'allauth',
+    # 'allauth.account',
+    # 'allauth.socialaccount',
 	'home',
 	'bookings',
 ]
 
 SITE_ID = 1
-
-LOGIN_REDIRECT_URL = '/'
-LOGOUT_REDIRECT_URL = '/'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -59,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'inaspace.urls'
@@ -83,6 +85,11 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'inaspace.wsgi.application'
+
+# AUTHENTICATION_BACKENDS = [
+#     'django.contrib.auth.backends.ModelBackend',
+#     'allauth.account.auth_backends.AuthenticationBackend',
+# ]
 
 
 # Database
@@ -144,6 +151,17 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+LOGIN_REDIRECT_URL = '/'  # Where to redirect after login
+LOGOUT_REDIRECT_URL = '/'  # Where to redirect after logout
+
+# ACCOUNT_EMAIL_REQUIRED = True
+# # Options: 'mandatory', 'optional', 'none'
+# ACCOUNT_EMAIL_VERIFICATION = 'optional'
+# # Options: 'username', 'email', 'username_email'
+# ACCOUNT_AUTHENTICATION_METHOD = 'username'
+# ACCOUNT_USERNAME_REQUIRED = True
+# ACCOUNT_PASSWORD_MIN_LENGTH = 8
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
