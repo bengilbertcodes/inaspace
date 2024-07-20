@@ -20,7 +20,7 @@ class Room(models.Model):
 		)
 	
 	def __str__(self):
-		return f"{self.room_name} ({self.room_number}) - {self.get_room_type_display()}"
+		return f"({self.room_number}) - {self.get_room_type_display()}"
 
 class Booking(models.Model):
 	booking_id = models.AutoField(primary_key=True)
