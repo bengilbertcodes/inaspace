@@ -3,6 +3,12 @@ from bookings.models import Room
 
 
 class Command(BaseCommand):
+    """
+    Command to generate dummy data for the Room table.
+    Rooms set over 4 floors. 15 rooms per floor.
+    room type chosen by cycling through room_types
+    Capacity all set to 10 but logic can be adjusted
+    """
     help = 'Populate the Room table with sample data'
 
     def handle(self, *args, **kwargs):
