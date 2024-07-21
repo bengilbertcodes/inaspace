@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
-from .forms import CustomLoginForm, SignUpForm
+from .models import Booking
+from .forms import CustomLoginForm, SignUpForm, BookingRequestForm
 
 
 def custom_login_view(request):
@@ -33,4 +34,8 @@ def signup(request):
 
 
 def booking_request(request):
-    form = booking_request(request.POST)
+    form_class = BookingRequestForm
+    template_name = 'booking/booking_request.html'
+    model = Booking
+    
+	
