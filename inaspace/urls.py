@@ -22,7 +22,8 @@ from bookings import views as app_views
 urlpatterns = [
 	path('', include('home.urls')),
     path('admin/', admin.site.urls),
+	path('accounts/', include('allauth.urls')),
 	path('signup/', app_views.signup, name='signup'),
-	path('login', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
+	path('login', auth_views.LoginView.as_view(template_name='accounts/login.html'), name='login'),
 	path('logout/', auth_views.LogoutView.as_view(), name='logout'),
 ]

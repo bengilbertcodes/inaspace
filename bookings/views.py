@@ -10,7 +10,7 @@ def custom_login_view(request):
         user = form.get_user()
         login(request, user)
         return redirect('home')
-    return render(request, 'registration/custom_login.html', {'form': form})
+    return render(request, 'account/custom_login.html', {'form': form})
 
 
 def signup(request):
@@ -27,4 +27,4 @@ def signup(request):
             return redirect('home')
     else:
         form = SignUpForm()
-    return render(request, 'registration/signup.html', {'form': form})
+    return render(request, 'account/signup.html', {'form': form})
