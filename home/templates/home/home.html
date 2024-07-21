@@ -9,13 +9,12 @@
 </head>
 
 <body>
-	<h1>Welcome to the Home Page</h1>
-	<a href="{% url 'login' %}">
-		<button>Login</button>
-	</a>
-	<a href="{% url 'signup' %}">
-		<button>Sign Up</button>
-	</a>
+	<div class="container">
+		<div class="d-grid gap-2 col-4 mx-auto">
+			<a class="btn btn-lg btn-secondary" href="{% url 'login' %}" type="button">Login</a>
+			<a class="btn btn-lg btn-secondary" href="{% url 'signup' %}" type="button">Signup</a>
+		</div>
+	</div>
 </body>
 
 </html>
