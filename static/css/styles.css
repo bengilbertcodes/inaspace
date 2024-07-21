@@ -114,11 +114,11 @@ body {
 
 main {
 	flex: 1;
+	min-height: 90vh;
 }
 
 footer {
 	bottom: 0;
-	height: 100px;
 	left: 0;
 	position: fixed;
 	width: 100%;
