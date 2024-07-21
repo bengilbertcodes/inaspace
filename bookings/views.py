@@ -7,8 +7,11 @@ from .forms import CustomLoginForm, SignUpForm
 def custom_login_view(request):
     form = CustomLoginForm(request=request, data=request.POST or None)
     if form.is_valid():
-        user = form.get_user()
+        username = request.POST["username"]
+        password = request.POST["password"]
+        user = authenticate(request, username=username, password=password)
         login(request, user)
+        messages.success(request, 'Successfully logged in')
         return redirect('home')
     return render(request, 'account/custom_login.html', {'form': form})
 
@@ -17,10 +20,17 @@ def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
-            user = form.save()
+            username = request.POST.get("username")
+            password = request.POST.get("password")
+            user = authenticate(
+                request, username=username, password=password)
             login(request, user)  # Automatically log in the user after sign-up
             messages.success(request, 'Account created successfully.')
             return redirect('home')
     else:
         form = SignUpForm()
     return render(request, 'accounts/signup.html', {'form': form})
+
+
+def booking_request(request):
+    form = booking_request(request.POST)
