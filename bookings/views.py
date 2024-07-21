@@ -1,6 +1,6 @@
-# your_app/views.py
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
+from django.contrib import messages
 from .forms import CustomLoginForm, SignUpForm
 
 
@@ -16,15 +16,11 @@ def custom_login_view(request):
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
-        if form.is_valid:
+        if form.is_valid():
             user = form.save()
-            user.refresh_from_db()
-            user.email = form.cleaned_data.get('email')
-            user.save()
-            raw_password = form.cleaned_data.get('password1')
-            user = authenticate(username=user.username, password=raw_password)
-            login(request, user)
+            login(request, user)  # Automatically log in the user after sign-up
+            messages.success(request, 'Account created successfully.')
             return redirect('home')
     else:
         form = SignUpForm()
-    return render(request, 'account/signup.html', {'form': form})
+    return render(request, 'accounts/signup.html', {'form': form})
