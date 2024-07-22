@@ -29,7 +29,7 @@ class BookingRequestForm(forms.ModelForm):
         fields = [
             'room_type', 'start_time', 'end_time'
 		]
-        room_type = forms.ModelChoiceForm(queryset=Booking.objects.all('room_type'), required=True)
+        room_type = forms.ModelChoiceField(queryset=Booking.objects('room_type'), required=True)
         labels = {
             'room_type': 'Room Type',
             'start_time': 'Start Time',
