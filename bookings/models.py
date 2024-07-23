@@ -2,12 +2,13 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
 
+ROOM_TYPE = [
+    ('office', 'Office'),
+  	('meeting', 'Meeting'),
+  	('rehearsal', 'Rehearsal'),
+]
+
 class Room(models.Model):
-	ROOM_TYPE = [
-		('office', 'Office'),
-		('meeting', 'Meeting'),
-		('rehearsal', 'Rehearsal'),
-	]
 
 	room_id = models.AutoField(primary_key=True)
 	room_number = models.CharField(max_length=10, unique=True)
