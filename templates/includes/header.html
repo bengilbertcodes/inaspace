@@ -1,0 +1,34 @@
+
+
+<body class="d-flex flex-column h-100">
+	<!-- Responsive navbar -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container">
+			<a class="navbar-brand" href="{% url 'home' %}">inaspace</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+				data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link {% if url_name == 'accounts_login' %}active{% endif %}" href="accounts/login/">Login</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<!-- Page content -->
+	<header>
+		<div class="container">
+			<div class="text-center mt-5">
+				<h1>inaspace</h1>
+				<p class="lead">Book your desk. Book your meeting. Book your rehearsal</p>
+			</div>
+		</div>
+	</header>

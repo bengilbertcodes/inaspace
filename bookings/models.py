@@ -4,8 +4,8 @@ from django.utils import timezone
 
 ROOM_TYPE = [
     ('office', 'Office'),
-  	('meeting', 'Meeting'),
-  	('rehearsal', 'Rehearsal'),
+	('meeting', 'Meeting'),
+	('rehearsal', 'Rehearsal'),
 ]
 
 class Room(models.Model):
