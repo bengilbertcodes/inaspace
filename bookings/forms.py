@@ -25,11 +25,6 @@ class BookingForm(forms.ModelForm):
             self.fields['user'] = forms.ModelChoiceField(queryset=User.objects.none(),
                                                          widget=forms.HiddenInput())
 
-        if 'start_time' in self.initial:
-            start_time = self.initial['start_time']
-            if not self.initial.get('end_time'):
-                self.initial['end_time'] = start_time + timedelta(hours=1)
-
     def clean(self):
         cleaned_data = super().clean()
         start_time = cleaned_data.get('start_time')
