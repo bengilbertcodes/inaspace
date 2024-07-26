@@ -1,18 +1,30 @@
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from django.contrib.auth.models import User
-from .models import Booking
+from .models import Booking, User, Room
 
-class BookingRequestForm(forms.ModelForm):
-
+class BookingForm(forms.ModelForm):
     class Meta:
         model = Booking
-        fields = [
-            'room_type', 'capacity' 'start_time', 'end_time'
-		]
-        labels = {
-            'room_type': 'Room Type',
-            'capacity': 'Capacity',
-            'start_time': 'Start Time',
-            'end_time': 'End Time',
-		}
+        fields = ['user', 'room', 'start_time', 'end_time']
+        widgets = {
+            'start_time': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
+            'end_time': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
+        }
+
+    def clean(self):
+        cleaned_data = super().clean()
+        start_time = cleaned_data.get('start_time')
+        end_time = cleaned_data.get('end_time')
+        room = cleaned_data.get('room')
+
+        # Check for overlapping bookings (optional)
+        if room and start_time and end_time:
+            overlapping_bookings = Booking.objects.filter(
+                room=room,
+                start_time__lt=end_time,
+                end_time__gt=start_time
+            )
+            if overlapping_bookings.exists():
+                raise forms.ValidationError(
+                    'This room is already booked during this time.')
+
+        return cleaned_data

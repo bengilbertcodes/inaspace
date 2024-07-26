@@ -37,7 +37,7 @@ class Booking(models.Model):
 	def __str__(self):
     # Extract user and room details
 		username = self.user.username
-		room_name = self.room.room_name
+		room_number = self.room.room_number
     
     # Format the booking time range
 		start_time_str = self.start_time.strftime('%d-%m-%Y %H:%M:%S')
@@ -46,7 +46,7 @@ class Booking(models.Model):
     # Construct the string representation
 		booking_description = (
 			f"Booking by {username} "
-			f"for {room_name} "
+			f"for {room_number} "
 			f"from {start_time_str} "
 			f"to {end_time_str}"
 		)
