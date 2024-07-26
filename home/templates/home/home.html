@@ -3,19 +3,27 @@
 {% block content %}
 <!DOCTYPE html>
 <html>
-
-<head>
-	<title>Home</title>
-</head>
-
+{% if request.user.is_authenticated %}
+	<h2>Welcome, {{ user.username }}</h2>
+{% else %}
+	<header>
+		<div class="container">
+			<div class="text-center mt-5">
+				<h1>inaspace</h1>
+				<p class="lead">Book your desk. Book your meeting. Book your rehearsal</p>
+			</div>
+		</div>
+	</header>
 <body>
 	<div class="container">
 		<div class="d-grid gap-2 col-4 mx-auto">
 			<a class="btn btn-lg btn-secondary" href="accounts/login/" type="button">Login</a>
-			<a class="btn btn-lg btn-secondary" href="accounts/signup/" type="button">Signup</a>
+			<a class="btn btn-lg btn-secondary" href="accounts/signup/" type="button">Register</a>
 		</div>
 	</div>
 </body>
+
+{% endif %}
 
 </html>
 {% endblock %}

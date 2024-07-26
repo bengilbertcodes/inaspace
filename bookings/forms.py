@@ -8,10 +8,11 @@ class BookingRequestForm(forms.ModelForm):
     class Meta:
         model = Booking
         fields = [
-            'room_type', 'start_time', 'end_time'
+            'room_type', 'capacity' 'start_time', 'end_time'
 		]
         labels = {
             'room_type': 'Room Type',
+            'capacity': 'Capacity',
             'start_time': 'Start Time',
             'end_time': 'End Time',
 		}
