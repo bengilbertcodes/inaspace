@@ -18,6 +18,9 @@
 						<a class="nav-link {% if url_name == 'home' %}active{% endif %}" href="{% url 'home' %}">Profile</a>
 					</li>
 					<li class="nav-item">
+						<a class="nav-link {% if url_name == 'booking' %}active{% endif %}" href="{% url 'booking' %}">Book a Room</a>
+					</li>
+					<li class="nav-item">
 						<a class="nav-link {% if url_name == 'accounts_logout' %}active{% endif %}" href="/accounts/logout/">Logout</a>
 					</li>
 					{% else %}

@@ -41,7 +41,7 @@ class Booking(models.Model):
     
     # Format the booking time range
 		start_time_str = self.start_time.strftime('%d-%m-%Y %H:%M:%S')
-		end_time_str = self.end_time.strftime('%d-%m-%Y %H:%M:%S')
+		end_time_str = self.end_time.strftime('%H:%M:%S')
     
     # Construct the string representation
 		booking_description = (
