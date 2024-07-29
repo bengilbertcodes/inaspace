@@ -14,6 +14,12 @@ class BookingForm(forms.ModelForm):
             'end_time': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
         }
 
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user', None)
+        super().__init__(*args, **kwargs)
+        if self.user:
+            pass
+
     def clean(self):
         cleaned_data = super().clean()
         start_time = cleaned_data.get('start_time')

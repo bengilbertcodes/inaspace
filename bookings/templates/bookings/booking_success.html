@@ -1,4 +1,7 @@
 {% extends 'base.html' %}
 
-<<p>Booking successful!</p>
-<a href="{% url 'booking_view' %}">Make another booking</a>
+
+{% block content %}
+<h2>Booking successful!</h2>
+<a href="{% url 'booking' %}">Make another booking</a>
+{% endblock %}

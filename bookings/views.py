@@ -1,14 +1,15 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
 from django.views import generic
 from .models import Booking
 from .forms import BookingForm
 
 
-class BookingView(generic.FormView):
+class BookingView(LoginRequiredMixin, generic.FormView):
     template_name = 'bookings/booking_form.html'
     form_class = BookingForm
-    success_url = 'bookings/booking_success.html'
+    success_url = reverse_lazy('booking_success')
 
     def form_valid(self, form):
         booking = form.save(commit=False)
@@ -16,8 +17,11 @@ class BookingView(generic.FormView):
         booking.save()
         return super().form_valid(form)
 
-    def get_form(self, form_class=None):
-        return self.form_class(user=self.request.user)
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
 
-class OpenBookingViews(generic.ListView):
-    model = Booking
+
+class BookingSuccessView(generic.TemplateView):
+    template_name = 'bookings/booking_success.html'
