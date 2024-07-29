@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views import generic
@@ -25,3 +26,15 @@ class BookingView(LoginRequiredMixin, generic.FormView):
 
 class BookingSuccessView(generic.TemplateView):
     template_name = 'bookings/booking_success.html'
+
+
+class BookingDeleteView(LoginRequiredMixin, generic.View):
+    def get(self, request, booking_id, *args, **kwargs):
+        booking = get_object_or_404(Booking, booking_id=booking_id)
+        return render(request, 'bookings/booking_confirm_delete.html', {'booking': booking})
+
+    def post(self, request, booking_id, *args, **kwargs):
+        booking = get_object_or_404(Booking, booking_id=booking_id)
+        booking.delete()
+        messages.success(request, 'Your booking has been successfully deleted')
+        return redirect(reverse_lazy('home'))

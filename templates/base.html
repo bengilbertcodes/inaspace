@@ -19,6 +19,19 @@
 	{% endblock %}
 		
 </head>
+{% if messages %}
+<div class="container">
+	{% for message in messages %}
+	<div class="alert alert-{{ message.tags }} alert-dismissible fade show message-box" role="alert">
+		{{ message }}
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	{% endfor %}
+</div>
+{% endif %}
+<body>
 	{% include 'includes/header.html' %}
 
 	<main>
@@ -29,9 +42,10 @@
 	{% include 'includes/footer.html' %}
 
 		{% block extra_js %}
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 		<!-- Bootstrap core JS -->
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-		<!-- Core theme JS -->
 		<script src="{% static 'js/scripts.js' %}"></script>
 		{% endblock%}
 

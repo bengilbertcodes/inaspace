@@ -13,6 +13,7 @@
 				<th class="col">Date</th>
 				<th class="col">Start Time</th>
 				<th class="col">End Time</th>
+				<th class="col">ID</th>
 				<th class="col">Actions</th>
 			</tr>
 		</thead>
@@ -23,9 +24,10 @@
 				<td>{{ booking.start_time|date:"d M Y"}}</td>
 				<td>{{ booking.start_time|date:"H:i" }}</td>
 				<td>{{ booking.end_time|time:"H:i" }}</td>
+				<td>{{ booking.booking_id }}</td>
 				<td>
 					<a class="btn btn-primary btn-sm" href="">Edit</a>
-					<a class="btn btn-danger btn-sm" href="">Delete</a>
+					<a class="btn btn-danger btn-sm" href="{% url 'delete_booking' booking.booking_id %}">Delete</a>
 				</td>
 			</tr>
 			{% endfor %}
