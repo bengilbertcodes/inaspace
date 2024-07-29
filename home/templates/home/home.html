@@ -3,6 +3,7 @@
 {% block content %}
 
 {% if request.user.is_authenticated %}
+<div class="container">
 	<h2>Welcome, {{ user.username }}</h2>
 	{% block booking_list %}
 	<h3>Your Bookings</h3>
@@ -26,13 +27,16 @@
 				<td>{{ booking.end_time|time:"H:i" }}</td>
 				<td>{{ booking.booking_id }}</td>
 				<td>
-					<a class="btn btn-primary btn-sm" href="">Edit</a>
-					<a class="btn btn-danger btn-sm" href="{% url 'delete_booking' booking.booking_id %}">Delete</a>
+					<div class="d-grid gap-2 d-md-block">
+					<a class="btn btn-primary btn-sm btn-block" href="{% url 'edit_booking' booking.booking_id %}">Edit</a>
+					<a class="btn btn-danger btn-sm btn-block" href="{% url 'delete_booking' booking.booking_id %}">Delete</a>
+					</div>
 				</td>
 			</tr>
 			{% endfor %}
 		</tbody>
 	</table>
+</div>
 	{% endblock %}
 {% else %}
 	<header>

@@ -38,3 +38,20 @@ class BookingDeleteView(LoginRequiredMixin, generic.View):
         booking.delete()
         messages.success(request, 'Your booking has been successfully deleted')
         return redirect(reverse_lazy('home'))
+
+
+class BookingEditView(LoginRequiredMixin, generic.View):
+    def get(self, request, booking_id, *args, **kwargs):
+        booking = get_object_or_404(Booking, booking_id=booking_id, user=request.user)
+        form = BookingForm(instance=booking)
+        return render(request, 'bookings/booking_form.html', {'form': form})
+    
+    def post(self, request, booking_id, *args, **kwargs):
+        booking = get_object_or_404(
+            Booking, booking_id=booking_id, user=request.user)
+        form = BookingForm(request.POST, instance=booking)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Booking has been successfully updated.')
+            return redirect(reverse_lazy('home'))
+        return render(request, 'bookings/booking_form.html', {'form': form})
