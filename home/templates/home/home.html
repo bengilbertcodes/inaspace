@@ -10,6 +10,7 @@
 		<thead>
 			<tr>
 				<th>Room</th>
+				<th>Date</th>
 				<th>Start Time</th>
 				<th>End Time</th>
 			</tr>
@@ -18,7 +19,8 @@
 			{% for booking in bookings %}
 			<tr>
 				<td>{{ booking.room }}</td>
-				<td>{{ booking.start_time|date:"d M Y H:i" }}</td>
+				<td>{{ booking.start_time|date:"d M Y"}}</td>
+				<td>{{ booking.start_time|date:"H:i" }}</td>
 				<td>{{ booking.end_time|time:"H:i" }}</td>
 			</tr>
 			{% endfor %}
