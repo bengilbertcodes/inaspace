@@ -1,17 +1,23 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views import generic
+from .models import Booking
 from .forms import BookingForm
 
 
-@login_required
-def booking_view(request):
-    if request.method == 'POST':
-        form = BookingForm(request.POST, user=request.user)
-        if form.is_valid():
-            booking = form.save(commit=False)
-            booking.user = request.user
-            booking.save()
-            return render(request, 'bookings/booking_success.html')
-    else:
-        form = BookingForm(user=request.user)
-    return render(request, 'bookings/booking_form.html', {'form': form})
+class BookingView(generic.FormView):
+    template_name = 'bookings/booking_form.html'
+    form_class = BookingForm
+    success_url = 'bookings/booking_success.html'
+
+    def form_valid(self, form):
+        booking = form.save(commit=False)
+        booking.user = self.request.user
+        booking.save()
+        return super().form_valid(form)
+
+    def get_form(self, form_class=None):
+        return self.form_class(user=self.request.user)
+
+class OpenBookingViews(generic.ListView):
+    model = Booking

@@ -1,16 +1,36 @@
 {% extends "base.html" %}
 
 {% block content %}
-<!DOCTYPE html>
-<html>
+
 {% if request.user.is_authenticated %}
 	<h2>Welcome, {{ user.username }}</h2>
+	{% block booking_list %}
+	<h3>Your Bookings</h3>
+	<table>
+		<thead>
+			<tr>
+				<th>Room</th>
+				<th>Start Time</th>
+				<th>End Time</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for booking in bookings %}
+			<tr>
+				<td>{{ booking.room }}</td>
+				<td>{{ booking.start_time|date:"d M Y H:i" }}</td>
+				<td>{{ booking.end_time|time:"H:i" }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	{% endblock %}
 {% else %}
 	<header>
 		<div class="container">
 			<div class="text-center mt-5">
 				<h1>inaspace</h1>
-				<p class="lead">Book your desk. Book your meeting. Book your rehearsal</p>
+				<p class="lead">Book your office. Book your meeting. Book your rehearsal</p>
 			</div>
 		</div>
 	</header>
@@ -25,5 +45,4 @@
 
 {% endif %}
 
-</html>
 {% endblock %}

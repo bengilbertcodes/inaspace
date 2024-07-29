@@ -1,6 +1,6 @@
 from django import forms
 from django.core.exceptions import ValidationError
-from .models import Booking, Room
+from .models import Booking
 from django.contrib.auth.models import User
 from datetime import timedelta
 
@@ -13,17 +13,6 @@ class BookingForm(forms.ModelForm):
             'start_time': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
             'end_time': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
         }
-
-    def __init__(self, *args, **kwargs):
-        user = kwargs.pop('user', None)
-        super().__init__(*args, **kwargs)
-        self.user = user
-        if user:
-            self.fields['user'] = forms.ModelChoiceField(queryset=User.objects.filter(id=user.id),
-                                                         widget=forms.HiddenInput())
-        else:
-            self.fields['user'] = forms.ModelChoiceField(queryset=User.objects.none(),
-                                                         widget=forms.HiddenInput())
 
     def clean(self):
         cleaned_data = super().clean()
