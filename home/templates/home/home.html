@@ -6,13 +6,14 @@
 	<h2>Welcome, {{ user.username }}</h2>
 	{% block booking_list %}
 	<h3>Your Bookings</h3>
-	<table>
-		<thead>
+	<table class="table table-striped">
+		<thead class="thead-light">
 			<tr>
-				<th>Room</th>
-				<th>Date</th>
-				<th>Start Time</th>
-				<th>End Time</th>
+				<th class="col">Room</th>
+				<th class="col">Date</th>
+				<th class="col">Start Time</th>
+				<th class="col">End Time</th>
+				<th class="col">Actions</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -22,6 +23,10 @@
 				<td>{{ booking.start_time|date:"d M Y"}}</td>
 				<td>{{ booking.start_time|date:"H:i" }}</td>
 				<td>{{ booking.end_time|time:"H:i" }}</td>
+				<td>
+					<a class="btn btn-primary btn-sm" href="">Edit</a>
+					<a class="btn btn-danger btn-sm" href="">Delete</a>
+				</td>
 			</tr>
 			{% endfor %}
 		</tbody>
