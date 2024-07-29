@@ -46,6 +46,7 @@
 </p>
 
 ### Database Schema
+  <img src="docs/readme_images/inaspace_ER_diagram.webp" width="75%" alt="mobile wireframe"/>
 
 ### Models
 
