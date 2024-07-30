@@ -90,3 +90,7 @@ a {
 	width: 20rem;
 	position: relative;
 }
+
+.dt-input {
+	margin-left: 4px;
+}

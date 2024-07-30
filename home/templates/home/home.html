@@ -7,7 +7,7 @@
 	<h2 class="text-secondary pt-3">Welcome, {{ user.first_name }}</h2>
 	{% block booking_list %}
 	<h5 class="pt-3">Your Bookings</h5>
-	<table class="table table-sm table-striped">
+	<table id="bookings-table" class="table table-sm table-striped">
 		<thead class="thead-light">
 			<tr>
 				<th class="col">Room</th>
@@ -55,6 +55,8 @@
 			<a class="btn btn-lg btn-secondary" href="accounts/signup/" type="button">Register</a>
 		</div>
 	</div>
+
+
 </body>
 
 {% endif %}

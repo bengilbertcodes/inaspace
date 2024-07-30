@@ -73,12 +73,24 @@ a {
 	width: fit-content;
 }
 
-.alert {
+.alert-container {
+	width: 100%;
+	display: flex;
+	justify-content: center;
 	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
 	z-index: 1010;
-	top: 3rem;
-	right: 1rem;
-	left: 1rem;
+}
+
+.alert {
 	text-align: center;
 	margin-top: 1rem;
+	width: 20rem;
+	position: relative;
+}
+
+.dt-input {
+	margin-left: 4px;
 }

@@ -33,56 +33,5 @@
 	</div>
 </div>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.13.18/jquery.timepicker.min.js"></script>
-	<link rel="stylesheet"
-		href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.13.18/jquery.timepicker.min.css" />
-	
-	
-	<script>
-		$(document).ready(function () {
-			// Initialize time pickers
-			$('#id_start_time').timepicker({
-				'timeFormat': 'H:i',
-				'step': 15,
-				'minTime': '08:00',
-				'maxTime': '21:45'
-			});
-
-
-			$('#id_end_time').timepicker({
-				'timeFormat': 'H:i',
-				'step': 15,
-				'minTime': '08:15',
-				'maxTime': '22:00'
-			});
-
-
-			// Set end_time default to start_time + 1 hour
-			$('#id_start_time').on('changeTime', function () {
-				var startTime = $(this).timepicker('getTime');
-				if (startTime) {
-					var endTime = new Date(startTime.getTime() + 60 * 60 * 1000); // add 1 hour
-					$('#id_end_time').timepicker('setTime', endTime);
-				}
-			});
-
-
-			// Ensure date cannot be in the past
-			$('#id_date').on('change', function () {
-				var selectedDate = new Date($(this).val());
-				var today = new Date();
-				today.setHours(0, 0, 0, 0); // Normalize today's date to midnight
-
-
-				if (selectedDate < today) {
-					alert('Date cannot be in the past');
-					$(this).val('');
-				}
-			});
-		});
-
-
-	</script>
-
 </body>
 {% endblock %}
