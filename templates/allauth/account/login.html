@@ -7,22 +7,26 @@
 {% block title %}{% trans "Sign In" %}{% endblock %}
 
 {% block content %}
-<div class="form text-center">
-	<h1>{% trans "Sign In" %}</h1>
+<div class="login-container1">
+	<div class="login-container2 border border-3 border-secondary">
+		<div class="form">
+			<h1>{% trans "Sign In" %}</h1>
 
-	<p>{% blocktrans %}If you have not created an account yet, then please
-		<a href="{{ signup_url }}">register</a> first.{% endblocktrans %}
-	</p>
+			<p>{% blocktrans %}If you have not created an account yet, then please
+				<a href="{{ signup_url }}">register</a> first.{% endblocktrans %}
+			</p>
 
 
-	<form class="p-2" method="POST" action="{% url 'account_login' %}">
-		{% csrf_token %}
-		{{ form|crispy }}
-		{% if redirect_field_value %}
-		<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-		{% endif %}
-		<button class="btn btn-primary w-25 mb-2" type="submit">Sign In</button>
-		<a class="button secondaryAction d-block" href="{% url 'account_reset_password' %}">Forgot password?</a>
-	</form>
+			<form class="p-2" method="POST" action="{% url 'account_login' %}">
+				{% csrf_token %}
+				{{ form|crispy }}
+				{% if redirect_field_value %}
+				<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+				{% endif %}
+				<button class="btn btn-primary w-25 mb-2" type="submit">Sign In</button>
+				<a class="button secondaryAction d-block" href="{% url 'account_reset_password' %}">Forgot password?</a>
+			</form>
+		</div>
+	</div>
 </div>
 {% endblock %}

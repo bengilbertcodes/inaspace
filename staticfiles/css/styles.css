@@ -43,19 +43,32 @@ footer {
 }
 
 .form {
-	display: ruby-text;
 	width: 90%;
 	margin: 5% auto;
+}
+
+.booking-form {
+	display: ruby-text;
 }
 
 a {
 	text-decoration: none;
 }
 
-input {
+.booking-form input {
 	max-width: 12rem;
 }
 
-.form-select {
+.booking-form select {
 	max-width: 12rem;
+}
+
+.login-container1 {
+	display: ruby-text;
+	padding-top: 5px;
+}
+
+.login-container2 {
+	display: block;
+	width: fit-content;
 }

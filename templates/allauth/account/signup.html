@@ -5,19 +5,21 @@
 {% block title %}{% trans "Register" %}{% endblock %}
 
 {% block content %}
-<div class="container form text-center">
-	<h1>{% trans "Register for an Account" %}</h1>
+<div class="login-container1">
+	<div class="login-container2 border border-3 border-secondary p-3">
+		<h1>{% trans "Register for an Account" %}</h1>
 
-	<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}
-	</p>
+		<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}
+		</p>
 
-	<form class="p-2" id="signup_form" method="post" action="{% url 'account_signup' %}">
-		{% csrf_token %}
-		{{ form|crispy }}
-		{% if redirect_field_value %}
-		<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-		{% endif %}
-		<button type="submit" class="btn btn-primary w-25">Register</button>
-	</form>
+		<form class="p-2" id="signup_form" method="post" action="{% url 'account_signup' %}">
+			{% csrf_token %}
+			{{ form|crispy }}
+			{% if redirect_field_value %}
+			<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+			{% endif %}
+			<button type="submit" class="btn btn-primary w-25">Register</button>
+		</form>
+	</div>
 </div>
 {% endblock %}
