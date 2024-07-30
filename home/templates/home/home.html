@@ -4,10 +4,10 @@
 
 {% if request.user.is_authenticated %}
 <div class="container">
-	<h2>Welcome, {{ user.username }}</h2>
+	<h2 class="text-secondary pt-3">Welcome, {{ user.first_name }}.</h2>
 	{% block booking_list %}
-	<h3>Your Bookings</h3>
-	<table class="table table-striped">
+	<h5 class="pt-3">Your Bookings</h5>
+	<table class="table table-sm table-striped">
 		<thead class="thead-light">
 			<tr>
 				<th class="col">Room</th>
@@ -32,6 +32,11 @@
 			{% endfor %}
 		</tbody>
 	</table>
+	<div class="container">
+		<div class="d-grid gap-2 col-4 mx-auto">
+			<a class="btn btn-lg btn-secondary" type="button" href="{% url 'booking' %}">Book a Room</a>
+		</div>
+	</div>
 </div>
 	{% endblock %}
 {% else %}

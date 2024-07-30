@@ -42,16 +42,20 @@ footer {
 	margin: 1rem;
 }
 
-.active {
-	border-bottom: #636464;
-	font-family: 400;
-}
-
 .form {
+	display: ruby-text;
 	width: 90%;
 	margin: 5% auto;
 }
 
 a {
 	text-decoration: none;
+}
+
+input {
+	max-width: 12rem;
+}
+
+.form-select {
+	max-width: 12rem;
 }
