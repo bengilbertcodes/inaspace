@@ -6,7 +6,6 @@ from django.views import generic
 from .models import Booking
 from .forms import BookingForm
 
-
 class BookingView(LoginRequiredMixin, generic.FormView):
     template_name = 'bookings/booking_form.html'
     form_class = BookingForm
@@ -26,6 +25,10 @@ class BookingView(LoginRequiredMixin, generic.FormView):
 
 class BookingSuccessView(generic.TemplateView):
     template_name = 'bookings/booking_success.html'
+    
+    def dispatch(self, request, *args, **kwargs):
+        messages.success(request, 'Your booking was successful')
+        return super().dispatch(request, *args, **kwargs)
 
 
 class BookingDeleteView(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView):
@@ -38,8 +41,9 @@ class BookingDeleteView(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteV
         return self.request.user == booking.user
 
     def delete(self, request, *args, **kwargs):
-        messages.success(request, 'Your booking has been successfully deleted')
-        return super().delete(request, *args, **kwargs)
+        response = super().delete(request, *args, **kwargs)
+        messages.success(request, 'Booking successfully deleted.')
+        return response
 
 
 class BookingEditView(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):

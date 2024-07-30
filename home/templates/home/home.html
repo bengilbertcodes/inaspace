@@ -4,7 +4,7 @@
 
 {% if request.user.is_authenticated %}
 <div class="container">
-	<h2 class="text-secondary pt-3">Welcome, {{ user.first_name }}.</h2>
+	<h2 class="text-secondary pt-3">Welcome, {{ user.first_name }}</h2>
 	{% block booking_list %}
 	<h5 class="pt-3">Your Bookings</h5>
 	<table class="table table-sm table-striped">
