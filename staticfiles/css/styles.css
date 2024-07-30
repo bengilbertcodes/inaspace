@@ -51,3 +51,7 @@ footer {
 	width: 90%;
 	margin: 5% auto;
 }
+
+a {
+	text-decoration: none;
+}

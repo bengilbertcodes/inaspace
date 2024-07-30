@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from django.views import generic
 from .models import Booking
@@ -28,30 +28,31 @@ class BookingSuccessView(generic.TemplateView):
     template_name = 'bookings/booking_success.html'
 
 
-class BookingDeleteView(LoginRequiredMixin, generic.View):
-    def get(self, request, booking_id, *args, **kwargs):
-        booking = get_object_or_404(Booking, booking_id=booking_id)
-        return render(request, 'bookings/booking_confirm_delete.html', {'booking': booking})
+class BookingDeleteView(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView):
+    model = Booking
+    success_url = reverse_lazy('home')
+    template_name = 'bookings/booking_confirm_delete.html'
 
-    def post(self, request, booking_id, *args, **kwargs):
-        booking = get_object_or_404(Booking, booking_id=booking_id)
-        booking.delete()
+    def test_func(self):
+        booking = self.get_object()
+        return self.request.user == booking.user
+
+    def delete(self, request, *args, **kwargs):
         messages.success(request, 'Your booking has been successfully deleted')
-        return redirect(reverse_lazy('home'))
+        return super().delete(request, *args, **kwargs)
 
 
-class BookingEditView(LoginRequiredMixin, generic.View):
-    def get(self, request, booking_id, *args, **kwargs):
-        booking = get_object_or_404(Booking, booking_id=booking_id, user=request.user)
-        form = BookingForm(instance=booking)
-        return render(request, 'bookings/booking_form.html', {'form': form})
-    
-    def post(self, request, booking_id, *args, **kwargs):
-        booking = get_object_or_404(
-            Booking, booking_id=booking_id, user=request.user)
-        form = BookingForm(request.POST, instance=booking)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Booking has been successfully updated.')
-            return redirect(reverse_lazy('home'))
-        return render(request, 'bookings/booking_form.html', {'form': form})
+class BookingEditView(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
+    model = Booking
+    form_class = BookingForm
+    template_name = 'bookings/booking_form.html'
+    success_url = reverse_lazy('home')
+
+    def test_func(self):
+        booking = self.get_object()
+        return self.request.user == booking.user
+
+    def form_valid(self, form):
+        messages.success(
+            self.request, 'Booking has been successfully updated.')
+        return super().form_valid(form)

@@ -1,46 +1,81 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from .models import Booking
-from django.contrib.auth.models import User
-from datetime import timedelta
+from datetime import datetime, timedelta, time
 
 
 class BookingForm(forms.ModelForm):
     class Meta:
         model = Booking
-        fields = ['room', 'start_time', 'end_time']
+        fields = ['room', 'date', 'start_time', 'end_time']
         widgets = {
-            'start_time': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
-            'end_time': forms.DateTimeInput(attrs={'type': 'datetime-local'}),
+            'date': forms.DateInput(attrs={
+                'type': 'date',
+                'class': 'form-control',
+                # Ensure date cannot be in the past
+                'min': datetime.now().date().strftime('%Y-%m-%d')
+            }),
+            'start_time': forms.TextInput(attrs={
+                'class': 'form-control',
+                'step': 900,  # 15 minutes
+                'type': 'text',
+                'placeholder': 'HH:MM'
+            }),
+            'end_time': forms.TextInput(attrs={
+                'class': 'form-control',
+                'step': 900,  # 15 minutes
+                'type': 'text',
+                'placeholder': 'HH:MM'
+            }),
         }
 
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop('user', None)
         super().__init__(*args, **kwargs)
+        self.is_editing = self.instance.pk is not None
 
     def clean(self):
         cleaned_data = super().clean()
+        date = cleaned_data.get('date')
         start_time = cleaned_data.get('start_time')
         end_time = cleaned_data.get('end_time')
         room = cleaned_data.get('room')
-        booking_id = self.instance.booking_id
+        booking_id = self.instance.pk if self.instance else None
 
-        # Ensure end_time is one hour after start_time by default if not provided
-        if start_time and not end_time:
-            end_time = start_time + timedelta(hours=1)
-            cleaned_data['end_time'] = end_time
+        # Combine date and time to datetime objects
+        if date and start_time:
+            start_datetime = datetime.combine(date, start_time)
+        else:
+            start_datetime = None
 
-        # Validate if start_time and end_time are provided and valid
-        if start_time and end_time:
-            if end_time <= start_time:
+        if date and end_time:
+            end_datetime = datetime.combine(date, end_time)
+        else:
+            end_datetime = None
+
+        # Ensure datetime is in the future
+        if start_datetime and start_datetime < datetime.now():
+            raise ValidationError('Start time cannot be in the past.')
+
+        if end_datetime and end_datetime < datetime.now():
+            raise ValidationError('End time cannot be in the past.')
+
+        # Apply logic to update end_time based on start_time if creating a new booking
+        if not self.is_editing and start_datetime and not end_datetime:
+            end_datetime = start_datetime + timedelta(hours=1)
+            cleaned_data['end_time'] = end_datetime.time()
+
+        # Validate if start_datetime and end_datetime are provided and valid
+        if start_datetime and end_datetime:
+            if end_datetime <= start_datetime:
                 raise ValidationError('End time must be after start time.')
 
-            # Check for overlapping bookings
+            # Check for overlapping bookings, excluding the current booking if editing
             overlapping_bookings = Booking.objects.filter(
                 room=room,
-                start_time__lt=end_time,
-                end_time__gt=start_time
-            ).exclude(booking_id=booking_id)  # Exclude the current booking if editing
+                start_time__lt=end_datetime,
+                end_time__gt=start_datetime
+            ).exclude(pk=booking_id)
 
             if overlapping_bookings.exists():
                 raise ValidationError(
