@@ -7,6 +7,7 @@
 	<h2 class="text-secondary pt-3">Welcome, {{ user.first_name }}</h2>
 	{% block booking_list %}
 	<h5 class="pt-3">Your Bookings</h5>
+	<div class="bookings-list-container">
 	<table id="bookings-table" class="table table-sm table-striped">
 		<thead class="thead-light">
 			<tr>
@@ -24,17 +25,18 @@
 				<td>{{ booking.date|date:"d M Y"}}</td>
 				<td>{{ booking.start_time|time:"H:i" }}</td>
 				<td>{{ booking.end_time|time:"H:i" }}</td>
-				<td class="d-grid gap-2 d-md-block">
-					<a class="btn btn-primary btn-sm btn-block" href="{% url 'edit_booking' booking.booking_id %}">Edit</a>
-					<a class="btn btn-danger btn-sm btn-block" href="{% url 'delete_booking' booking.booking_id %}">Delete</a>
+				<td class="d-grid gap-1 d-lg-block">
+					<a class="action-buttons btn btn-primary btn-sm" href="{% url 'edit_booking' booking.booking_id %}">Edit</a>
+					<a class="action-buttons btn btn-danger btn-sm" href="{% url 'delete_booking' booking.booking_id %}">Delete</a>
 				</td>
 			</tr>
 			{% endfor %}
 		</tbody>
 	</table>
+	</div>
 	<div class="container">
-		<div class="d-grid gap-2 col-4 mx-auto">
-			<a class="btn btn-lg btn-secondary" type="button" href="{% url 'booking' %}">Book a Room</a>
+		<div class="d-grid gap-1 col-4 mx-auto">
+			<a class="btn btn-md btn-secondary" type="button" href="{% url 'booking' %}">Book a Room</a>
 		</div>
 	</div>
 </div>

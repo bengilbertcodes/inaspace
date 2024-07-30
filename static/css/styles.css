@@ -94,3 +94,16 @@ a {
 .dt-input {
 	margin-left: 4px;
 }
+
+.bookings-list-container {
+	width: 100%;
+}
+
+.table {
+	font-size: small;
+}
+
+.action-buttons {
+	font-size: small;
+	/* padding: 0.05rem; */
+}

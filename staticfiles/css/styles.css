@@ -94,3 +94,7 @@ a {
 .dt-input {
 	margin-left: 4px;
 }
+
+.bookings-list-container {
+	width: 100%;
+}
