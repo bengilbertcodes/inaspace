@@ -40,9 +40,16 @@
 ## Project planning
 
 ### Wireframes
-<p float="center">
-  <img src="docs/readme_images/inaspace_mobile_view.png" height="200px" alt="mobile wireframe"/>
-  <img src="docs/readme_images/inaspace_tablet_view.png" height="200px" alt="tablet wireframe"/> 
+#### Home Page
+<p>
+  <img src="docs/readme_images/inaspace_mobile_view.webp" height="300px" alt="mobile wireframe"/>
+  <img src="docs/readme_images/inaspace_tablet_view.webp" height="300px" alt="tablet wireframe"/> 
+</p>
+
+#### Profile Page 
+<p>
+  <img src="docs/readme_images/inaspace_home_mobile.webp" height="300px" alt="mobile wireframe"/>
+  <img src="docs/readme_images/inaspace_home_tablet.webp" height="300px" alt="tablet wireframe"/> 
 </p>
 
 ### Database Schema
