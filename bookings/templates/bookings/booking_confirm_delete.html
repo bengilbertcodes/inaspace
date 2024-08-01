@@ -1,14 +1,21 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% load crispy_forms_tags %}
+
 {% block content %}
 <div class="container">
-	<h2 class="pt-3">Confirm Delete</h2>
-	<p>Are you sure you want to delete booking {{ booking.booking_id }}: Room {{ booking.room }} on {{ booking.date|date:"d M Y" }} from {{ booking.start_time|time:"H:i" }} to {{ booking.end_time|time:"H:i" }}?</p>
-	<form method="post">
-		{% csrf_token %}
-		<button type="submit" class="btn btn-danger">Delete</button>
-		<a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>
-	</form>
+	<div class="text-center">
+		<h2 class="pt-3">Confirm Delete</h2>
+	</div>
+	<div class="container delete-container border border-3 border-secondary text-center">
+		<p>Are you sure you want to delete booking {{ booking.booking_id }}: Room {{ booking.room }} on {{ booking.date|date:"d M Y" }} from {{ booking.start_time|time:"H:i" }} to {{ booking.end_time|time:"H:i" }}?</p>
+		<form class="form" method="post">
+			{% csrf_token %}
+			{{ form|crispy }}
+			<button type="submit" class="btn btn-danger">Delete</button>
+			<a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>
+		</form>
+	</div>
 </div>
 {% endblock %}

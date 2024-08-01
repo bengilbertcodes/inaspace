@@ -15,7 +15,7 @@
 				<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 					{% if request.user.is_authenticated %}
 					<li class="nav-item">
-						<a class="nav-link {% if url_name == 'home' %}active{% endif %}" href="{% url 'home' %}">Profile</a>
+						<a class="nav-link {% if url_name == 'home' %}active{% endif %}" href="{% url 'home' %}">Your Dashboard</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link {% if url_name == 'booking' %}active{% endif %}" href="{% url 'booking' %}">Book a Room</a>

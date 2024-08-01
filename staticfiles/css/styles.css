@@ -105,9 +105,8 @@ a {
 
 .action-buttons {
 	font-size: small;
-	/* padding: 0.05rem; */
 }
 
-.error-page {
-	margin-top: 20px;
+.delete-container {
+	width: 50%;
 }
