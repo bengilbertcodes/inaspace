@@ -3,7 +3,7 @@ from django.core.exceptions import ValidationError
 from django.utils import timezone
 from datetime import datetime, timedelta
 from bookings.forms import CustomSignupForm, BookingForm
-from .models import Booking, ROOM_TYPE
+from .models import Booking, ROOM_TYPE, Room
 from django.contrib.auth.models import User
 
 class TestSignupForm(TestCase):
@@ -98,4 +98,52 @@ class testBookingForm(TestCase):
     def setUp(self):
         """ Sets up a test user """
         self.user = User.objects.create_user(username='testuser', password='12345')
-        self.room_type = ROOM_TYPE[0][0]
+        self.room_type = Room.objects.create(room_number='101', capacity=10, room_type='office')
+    
+    def test_form_date_not_in_past(self):
+        """ Test for date not being before now (today) """
+        past_date = timezone.now().date() - timedelta(days=1)
+        form_data = {
+			'room': self.room_type,
+			'date': past_date,
+			'start_time': '10:00',
+			'end_time': '11:00',
+		}
+        form = BookingForm(data=form_data, user=self.user)
+        self.assertFalse(form.is_valid(), msg='Form is valid')
+        
+    def test_form_start_time_not_in_past(self):
+        """ Test to ensure start_time cannot be in the past """
+        past_datetime = timezone.now() - timedelta(minutes=10)
+        form_data = {
+			'room': self.room_type,
+			'date': past_datetime.date(),
+			'start_time': past_datetime.time(),
+			'end_time': (past_datetime + timedelta(hours=1)).time(),
+		}
+        form =BookingForm(data=form_data, user=self.user)
+        self.assertFalse(form.is_valid(), msg='Form is valid')
+    
+    def test_end_time_after_start_time(self):
+        """ Test for end_time not before start_time """
+        future_date = timezone.now().date() + timedelta(days=1)
+        form_data = {
+			'room': self.room_type,
+			'date': future_date,
+			'start_time': '12:00',
+			'end_time': '11:00',
+		}
+        form = BookingForm(data=form_data, user=self.user)
+        self.assertFalse(form.is_valid(), msg='Form is valid')
+    
+    def test_valid_booking(self):
+        future_date = timezone.now().date() + timedelta(days=1)
+        form_data = {
+			'room': self.room_type,
+			'date': future_date,
+			'start_time': '14:00',
+			'end_time': '16:15',
+		}
+        form = BookingForm(data=form_data, user=self.user)
+        self.assertTrue(form.is_valid(), msg='Form is invalid')
+
