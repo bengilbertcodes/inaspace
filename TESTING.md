@@ -52,7 +52,9 @@ I performed Lighthouse tests using Chrome Dev tools in an incognito window.
 To check User Stories completion, please refer to the [Kanban Board]().
 
 ## Automated testing
-The functionalities tested were:
+The functionalities tested in bookings/test_forms.py were: 
+- All user input fields in CustomSignupForm <br>
+<img src="docs/testing_images/CustomSignupForm_test.webp" height="100px" alt="CustomSignupForm Results">
 
 
 ## Browser Compatibility
