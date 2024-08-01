@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<body>
+	<div class="container">
+		<div class="pt-3 text-center">
+			<h1>500 - Internal Server Error</h1>
+			<p class="pt-3">Don't worry, this is our problem, not yours!</p>
+			<a class="btn btn-md btn-secondary" href="{% url 'home' %}">
+				Click here to return to inaspace
+			</a>
+		</div>
+	</div>
+</body>
+{% endblock %}

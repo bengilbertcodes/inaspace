@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<body>
+	<div class="container">
+		<div class="pt-3 text-center">
+			<h1>404 - page not found</h1>
+			<p class="pt-3">Sorry, the page you're looking for doesn't exist.</p>
+			<a class="btn btn-md btn-secondary" href="{% url 'home' %}">
+				Click here to return to inaspace
+			</a>
+		</div>
+	</div>
+</body>
+{% endblock %}

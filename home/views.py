@@ -29,5 +29,3 @@ class HomeView(TemplateView):
         return context
 
 
-class ActiveBookingsView(TemplateView):
-    template_name = 'home/home.html'

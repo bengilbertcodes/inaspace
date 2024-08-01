@@ -98,3 +98,16 @@ a {
 .bookings-list-container {
 	width: 100%;
 }
+
+.table {
+	font-size: small;
+}
+
+.action-buttons {
+	font-size: small;
+	/* padding: 0.05rem; */
+}
+
+.error-page {
+	margin-top: 20px;
+}

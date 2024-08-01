@@ -22,8 +22,6 @@
 		href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.13.18/jquery.timepicker.min.css" />
 	<link href="{% static 'css/styles.css' %}" rel="stylesheet" />
 	{% endblock %}
-	
-		
 </head>
 
 <body>
@@ -93,7 +91,7 @@
 		$('#bookings-table').DataTable({
 			"columnDefs": [
 				{ "type": "date-dd-mmm-yyyy", "targets": 1 },
-				{ "orderable": false, "targets": 4 }
+				{ "orderable": false, "targets": [ 3, 4] }
 			],
 			"order": [[1, 'asc']]
 		});
