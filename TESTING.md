@@ -1,17 +1,12 @@
-# inaspace: A Room Booking app - Testing details
+# inaspace - Testing details
 
 [Main README.md file](README.md) <br>
-[View the website on Heroku]()
+[View the website on Heroku](https://inaspace-4c7fc427a59a.herokuapp.com/)
 
 ## Validator Testing
 
 ### HTML
 All the HTML files were checked with [W3C Markup Validation Service](https://validator.w3.org/) and errors identified addressed.
-
-**Exclusions:**
-
-Some errors involving Django elements, such as Summernote features or Bootstrap, were excluded. These errors were acknowledged but not modified as they are integral to the correct functionality of the website.
-
 
 ### CSS
 
@@ -28,21 +23,34 @@ JS files were checked with [JSHint](https://jshint.com/) with no errors.
 I performed Lighthouse tests using Chrome Dev tools in an incognito window.
 
 - **Homepage**:
+<p>
+	<img src="docs/testing_images/inaspace_lighthouse_home.webp" width="45%" alt="Homepage Lighthouse Results"/>
+</p>
 
+- **Dashboard page**:
+<p>
+	<img src="docs/testing_images/inaspace_lighthouse_dashboard.webp" width="45%" alt="Dashboard Lighthouse Results"/>
+</p>
 
-- **Profile page**:    
+- **Registration Form**:
+<p>
+	<img src="docs/testing_images/inaspace_lighthouse_registration.webp" width="45%" alt="Registration Form Lighthouse Results"/>
+</p>
 
-- **About page**:
-
-
-- **Register page**:
-
-
-- **Login page**:
-
+- **Login Form**:
+<p>
+	<img src="docs/testing_images/inaspace_lighthouse_signin.webp" width="45%" alt="Signin Lighthouse Results"/>
+</p>
 
 - **Logout page**:
+<p>
+	<img src="docs/testing_images/inaspace_lighthouse_logout.webp" width="45%" alt="Logout Lighthouse Results"/>
+</p>
 
+- **Booking Form**:
+<p>
+	<img src="docs/testing_images/inaspace_lighthouse_bookingform.webp" width="45%" alt="Booking Form Lighthouse Results"/>
+</p>
 
 ## Manual testing
 
@@ -176,7 +184,7 @@ I performed Lighthouse tests using Chrome Dev tools in an incognito window.
 The functionalities tested in bookings/test_forms.py were: 
 - All user input fields in CustomSignupForm
 - User input fields for BookingForm <br>
-<img src="docs/testing_images/.webp" height="100px" alt="CustomSignupForm Results">
+<img src="docs/testing_images/CustomSignupForm_test.webp" height="100px" alt="CustomSignupForm Results">
 
 
 ## Browser Compatibility
