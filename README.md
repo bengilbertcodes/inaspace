@@ -29,14 +29,12 @@ Welcome to inaspace, the straightforward application designed for booking rooms 
         * [Languages](#languages)
         * [Frameworks](#frameworks)
         * [Libraries & Packages](#libraries--packages)
+- [Future Features](#future-features)
 - [Testing](#testing)
-- [Features](#features)
-    * [Future Features](#future-features)
 - [Deployment](#deployment)
-    * [GitHub](#github)
     * [Heroku](#heroku)
+    * [GitHub](#github)
 - [Credits](#credits)
-    * [Code](#code)
     * [Media](#media)
     * [Acknowledgements](#acknowledgements)
 
@@ -164,6 +162,8 @@ Note: 3 other user stories have been added to Future Development Ideas below.
 #### Kanban board
 [Click here to view Kanban board on Github](https://github.com/users/bengilbertcodes/projects/6/views/1)
 
+### Future Features
+
 ### Technologies Used
 
 #### Languages
@@ -173,30 +173,74 @@ Note: 3 other user stories have been added to Future Development Ideas below.
 - Python
 
 #### Frameworks
-- Django
-- Bootstrap 5
+- Django - Python framework used in development.
+- Bootstrap 5 - CSS Framework used for styling the application
 
 #### Libraries & Packages
-- JQuery
-- django-allauth
-- DataTable [link to datatables.net](https://datatables.net/)
-- jQuery Timepicker
+- Django Allauth - Used for authentication and account registration
+- Django Crispy Forms - used to simplify the rendering of Django forms.
+- DataTable [link to datatables.net](https://datatables.net/). Allows ordering of bookings table.
+- jQuery Timepicker - used to customise the booking form.
+- Guicorn - Python HTTP server, used as web server to run Django on Heroku.
 
 #### Tools & Programs
 - VSCode
 - Github Pages
 - Github Kanban Board
+- [Code Institute Postgres database](https://dbs.ci-dbs.net/) was the database used.
+- Chrome and Firefox Dev tools
+- Lucidchart - used to create the database schema plan
+- Balsamiq - used to create wireframes during the design process
+- Heroku - platform used for app deployment
+- PEP8 - To ensure code meets PEP8 requirements
+- HTML Validator
+- W3 CSS Validator
+- JShint
 
 ### Testing
+For full testing results see [TESTING.md](/TESTING.md)
 
 ### Deployment
 
-#### GitHub
-
 #### Heroku
 
-### Features
+Heroku was used to deploy the site. Here are the steps to deploy:
+
+1. Log in to Heroku.
+2. Click "Create a new app".
+3. Choose the app name and region.
+4. Click "Create app".
+5. Navigate to the "settings" tab.
+6. "Click "Reveal Config Vars".
+7. Add DATABASE_URL, SECRET_KEY to Config Vars
+8. Scroll down to "Buildpacks".
+9. Click "Add Buildpack".
+10. Add "heroku/python".
+11. Return to "Deploy" tab.
+12. Select Github as Deployment Method and connect to the repository.
+13. In 'Manual Deploy' click 'Deploy Branch'
+14. Click 'Open App' to view the deployed version.
+
+#### GitHub
+Github was used to store the repository.
+Changes made within VSCode were pushed to Github using the follwing commands:
+- git add .
+- git commit -m 'message'
+- git push
+
+A fork can be created by navigating to the repository, clicking the fork button and selecting 'create fork. The name can be altered and a description can be added. Just the Main Branch or all Branches can be added to the new fork. Click Create a Fork and the repository will appear in your Github.
+
+The repository can be cloned by selecting the Code button and copyong the link. This link can be used to create a local clone in your editor or IDE.
 
 ### Credits
+- [startbootstrap.com - Bare template](https://startbootstrap.com/template/bare) - used to establish basic layout and navigation structure.
+- [codemy.com - Intro to Django - Resume Website course](https://members.codemy.com/l/intro-to-django-resume-website/) - to help improve my understanding of Django applications.
+- [codemy.com - User authentication with Python and Django course](https://members.codemy.com/l/user-authentication-with-python-and-django/) - to help improve my understanding of Django applications.
+- [Dee Mc - Youtube - Recipe Sharing and Meal Planning app tutorial](https://www.youtube.com/watch?v=sBjbty691eI&list=PLXuTq6OsqZjbCSfiLNb2f1FOs8viArjWy&ab_channel=DeeMc) - Used to help with the implementation of Mixins.
+- [Gareth McGirr - Sizzle and Steak repo](https://github.com/Gareth-McGirr/Portfolio-Project-4-SizzleAndSteak) - for assistance structuring the booking system.
+- [Code Institute - I Think Therefore I Blog walkthrough](https://learn.codeinstitute.net/)
+- [Stackoverflow](https://stackoverflow.com/questions/61817323/how-to-convert-my-simple-table-to-the-datatables) - for help setting up DataTables
 
 #### Acknowledgements
+Gareth McGirr - as my mentor through this project.
+Natalie Beddow, Dan McKeown, Malin Christina, Terry Gilbert - for being great testers.

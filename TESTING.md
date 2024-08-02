@@ -47,9 +47,130 @@ I performed Lighthouse tests using Chrome Dev tools in an incognito window.
 ## Manual testing
 
 
-## User Stories completion
+<h2>Test Cases</h2>
 
-To check User Stories completion, please refer to the [Kanban Board]().
+<table>
+    <tr>
+        <th>Test Case ID</th>
+        <th>Test Description</th>
+        <th>Preconditions</th>
+        <th>Test Steps</th>
+        <th>Expected Result</th>
+        <th>Status</th>
+    </tr>
+    <tr>
+        <td>TC001</td>
+        <td>User Registration</td>
+        <td>User must not be logged in</td>
+        <td>
+            <ol>
+                <li>Navigate to registration page</li>
+                <li>Fill in user details</li>
+                <li>Submit form</li>
+            </ol>
+        </td>
+        <td>User account is created and confirmation message is displayed</td>
+        <td>Pass</td>
+    </tr>
+    <tr>
+        <td>TC002</td>
+        <td>User Login</td>
+        <td>User account must exist</td>
+        <td>
+            <ol>
+                <li>Navigate to login page</li>
+                <li>Enter valid credentials</li>
+                <li>Submit form</li>
+            </ol>
+        </td>
+        <td>User is redirected to the dashboard</td>
+        <td>Pass</td>
+    </tr>
+    <tr>
+        <td>TC003</td>
+        <td>Invalid Login</td>
+        <td>User account must exist</td>
+        <td>
+            <ol>
+                <li>Navigate to login page</li>
+                <li>Enter invalid credentials</li>
+                <li>Submit form</li>
+            </ol>
+        </td>
+        <td>Error message is displayed indicating invalid credentials</td>
+        <td>Pass</td>
+    </tr>
+    <tr>
+        <td>TC004</td>
+        <td>Password Reset</td>
+        <td>User must have a registered email</td>
+        <td>
+            <ol>
+                <li>Navigate to password reset page</li>
+                <li>Enter registered email</li>
+                <li>Submit form</li>
+            </ol>
+        </td>
+        <td>Password reset link is sent to the email</td>
+        <td>Pass</td>
+    </tr>
+    <tr>
+        <td>TC005</td>
+        <td>Create New Room Booking</td>
+        <td>User must be logged in</td>
+        <td>
+            <ol>
+                <li>Navigate to Book a Room page</li>
+                <li>Enter Booking details</li>
+                <li>Submit Booking</li>
+            </ol>
+        </td>
+        <td>New Booking is created and displayed on Users dashboard</td>
+        <td>Pass</td>
+    </tr>
+    <tr>
+        <td>TC006</td>
+        <td>Edit an existing Room Booking</td>
+        <td>User must be logged in</td>
+        <td>
+            <ol>
+                <li>Navigate to Dashboard page</li>
+                <li>Click on edit</li>
+                <li>Update details</li>
+                <li>Save changes</li>
+            </ol>
+        </td>
+        <td>Existing booking is updated and new version is displayed on Users dashboard</td>
+        <td>Pass</td>
+    </tr>
+    <tr>
+        <td>TC007</td>
+        <td>Delete an existing Room Booking</td>
+        <td>User must be logged in</td>
+        <td>
+            <ol>
+                <li>Navigate to Dashboard page</li>
+                <li>Click delete on required record</li>
+                <li>Click Delete on confirmation page</li>
+            </ol>
+        </td>
+        <td>Existing booking is deleted and dashboard is updated</td>
+        <td>Pass</td>
+    </tr>
+    <tr>
+        <td>TC008</td>
+        <td>Logout</td>
+        <td>User must be logged in</td>
+        <td>
+            <ol>
+                <li>Click on the logout nav bar link</li>
+                <li>Confirm user wants to sign out</li>
+            </ol>
+        </td>
+        <td>User is logged out and redirected to the home page</td>
+        <td>Pass</td>
+    </tr>
+</table>
 
 ## Automated testing
 The functionalities tested in bookings/test_forms.py were: 
