@@ -20,7 +20,7 @@ JS files were checked with [JSHint](https://jshint.com/) with no errors.
 [CI Python Linter](https://pep8ci.herokuapp.com/#) was used to validate the Python code. All the errors highlighted were fixed. 
 
 ## Lighthouse Testing
-I performed Lighthouse tests using Chrome Dev tools in an incognito window.
+Lighthouse tests using Chrome Dev tools in an incognito window.
 
 - **Homepage**:
 <p>
@@ -194,5 +194,3 @@ Below are the browsers that have been tested:
 The website's responsiveness has been tested using Google Chrome Developer Tools. To ensure compatibility across different devices, various screen resolutions were simulated.
 
 The website displays responsively across a wide range of devices and screen sizes.
-
-## Bugs resolved

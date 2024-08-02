@@ -6,6 +6,7 @@ from django.views import generic
 from .models import Booking
 from .forms import BookingForm
 
+
 class BookingView(LoginRequiredMixin, generic.FormView):
     template_name = 'bookings/booking_form.html'
     form_class = BookingForm
@@ -25,13 +26,14 @@ class BookingView(LoginRequiredMixin, generic.FormView):
 
 class BookingSuccessView(generic.TemplateView):
     template_name = 'bookings/booking_success.html'
-    
+
     def dispatch(self, request, *args, **kwargs):
         messages.success(request, 'Your booking was successful')
         return super().dispatch(request, *args, **kwargs)
 
 
-class BookingDeleteView(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView):
+class BookingDeleteView(LoginRequiredMixin, UserPassesTestMixin,
+                        generic.DeleteView):
     model = Booking
     success_url = reverse_lazy('home')
     template_name = 'bookings/booking_confirm_delete.html'
@@ -46,7 +48,8 @@ class BookingDeleteView(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteV
         return response
 
 
-class BookingEditView(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
+class BookingEditView(LoginRequiredMixin, UserPassesTestMixin,
+                      generic.UpdateView):
     model = Booking
     form_class = BookingForm
     template_name = 'bookings/booking_form.html'

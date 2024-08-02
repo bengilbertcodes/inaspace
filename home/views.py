@@ -21,11 +21,9 @@ class HomeView(TemplateView):
             context['bookings'] = Booking.objects.filter(
                 user=self.request.user,
                 date__gte=now.date(),
-			)
-				
+            )
+
         else:
             # Different view for unauthenticated users
             context['bookings'] = []
-        return context
-
-
+            return context

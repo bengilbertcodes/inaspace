@@ -4,10 +4,13 @@ from django.core.exceptions import ValidationError
 from .models import Booking
 from datetime import datetime, timedelta, time
 
+
 class CustomSignupForm(SignupForm):
-    first_name = forms.CharField(max_length=25, required=False, label='First Name')
-    last_name = forms.CharField(max_length=25, required=False, label='Last Name')
-    
+    first_name = forms.CharField(
+        max_length=25, required=False, label='First Name')
+    last_name = forms.CharField(
+        max_length=25, required=False, label='Last Name')
+
     def save(self, request):
         user = super(CustomSignupForm, self).save(request)
         user.first_name = self.cleaned_data['first_name']
@@ -72,7 +75,7 @@ class BookingForm(forms.ModelForm):
         if end_datetime and end_datetime < datetime.now():
             raise ValidationError('End time cannot be in the past.')
 
-        # Apply logic to update end_time based on start_time if creating a new booking
+        # Update end_time based on start_time if creating a new booking
         if not self.is_editing and start_datetime and not end_datetime:
             end_datetime = start_datetime + timedelta(hours=1)
             cleaned_data['end_time'] = end_datetime.time()
@@ -82,7 +85,8 @@ class BookingForm(forms.ModelForm):
             if end_datetime <= start_datetime:
                 raise ValidationError('End time must be after start time.')
 
-            # Check for overlapping bookings, excluding the current booking if editing
+            # Check for overlapping bookings,
+            # When editing, exclude the current booking
             overlapping_bookings = Booking.objects.filter(
                 room=room,
                 start_time__lt=end_datetime,

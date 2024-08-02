@@ -17,7 +17,7 @@ import dj_database_url
 from django.contrib.messages import constants as messages
 
 if os.path.isfile('env.py'):
-	import env
+    import env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
@@ -33,7 +33,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1',
-                '.herokuapp.com']
+                 '.herokuapp.com']
 
 
 # Application definition
@@ -52,8 +52,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     # apps
-	'home',
-	'bookings',
+    'home',
+    'bookings',
 ]
 
 SITE_ID = 1
@@ -80,8 +80,8 @@ TEMPLATES = [
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
             os.path.join(BASE_DIR, 'templates'),
-			os.path.join(BASE_DIR, 'templates', 'allauth'),
-		],
+            os.path.join(BASE_DIR, 'templates', 'allauth'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -93,7 +93,7 @@ TEMPLATES = [
             'builtins': [
                 'crispy_forms.templatetags.crispy_forms_tags',
                 'crispy_forms.templatetags.crispy_forms_field',
-			]
+            ]
         },
     },
 ]
@@ -138,16 +138,20 @@ if 'test' in sys.argv:
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation.'
+        'UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_validation.'
+        'MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.'
+        'CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.'
+        'NumericPasswordValidator',
     },
 ]
 
@@ -173,7 +177,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 ACCOUNT_FORMS = {
-	'signup': 'bookings.forms.CustomSignupForm'
+    'signup': 'bookings.forms.CustomSignupForm'
 }
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
