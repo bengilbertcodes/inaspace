@@ -40,11 +40,13 @@ class Booking(models.Model):
     def __str__(self):
         username = self.user.username
         room_number = self.room.room_number
-        start_time_str = self.start_time.strftime('%d-%m-%Y %H:%M:%S')
+        date_str = self.date.strftime('%d-%m-%Y')
+        start_time_str = self.start_time.strftime('%H:%M:%S')
         end_time_str = self.end_time.strftime('%H:%M:%S')
         booking_description = (
             f"Booking by {username} "
             f"for {room_number} "
+            f"on {date_str} "
             f"from {start_time_str} "
             f"to {end_time_str}"
         )
