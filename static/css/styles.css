@@ -104,6 +104,7 @@ a {
 
 .action-buttons {
 	font-size: small;
+	width: 50%;
 }
 
 .delete-container {

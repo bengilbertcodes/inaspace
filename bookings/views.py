@@ -43,8 +43,11 @@ class BookingDeleteView(LoginRequiredMixin, UserPassesTestMixin,
 
 	def delete(self, request, *args, **kwargs):
 		response = super().delete(request, *args, **kwargs)
-		messages.success(self.request, 'Booking successfully deleted.')
+		self.add_success_message()
 		return response
+
+	def add_success_message(self):
+		messages.success(self.request, 'Booking successfully deleted.')
 
 
 class BookingEditView(LoginRequiredMixin, UserPassesTestMixin,
