@@ -2,7 +2,7 @@ from django import forms
 from allauth.account.forms import SignupForm
 from django.core.exceptions import ValidationError
 from .models import Booking
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta,
 
 
 class CustomSignupForm(SignupForm):
@@ -52,13 +52,13 @@ class BookingForm(forms.ModelForm):
             'start_time': forms.TextInput(attrs={
                 'class': 'form-control',
                 'step': 900,  # 15 minutes
-                'type': 'time',
+                'type': 'text',
                 'placeholder': 'HH:MM'
             }),
             'end_time': forms.TextInput(attrs={
                 'class': 'form-control',
                 'step': 900,  # 15 minutes
-                'type': 'time',
+                'type': 'text',
                 'placeholder': 'HH:MM'
             }),
         }
