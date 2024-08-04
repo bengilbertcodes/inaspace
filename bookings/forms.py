@@ -53,13 +53,13 @@ class BookingForm(forms.ModelForm):
                 'class': 'form-control',
                 'step': 900,  # 15 minutes
                 'type': 'text',
-                'placeholder': 'hh:mm'
+                'placeholder': 'HH:MM'
             }),
             'end_time': forms.TextInput(attrs={
                 'class': 'form-control',
                 'step': 900,  # 15 minutes
                 'type': 'text',
-                'placeholder': 'hh:mm'
+                'placeholder': 'HH:MM'
             }),
         }
 
