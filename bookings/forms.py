@@ -6,6 +6,9 @@ from datetime import datetime, timedelta, time
 
 
 class CustomSignupForm(SignupForm):
+    """
+    Add first_name and last_name fields to enhance Allauth's signup form
+    """
     first_name = forms.CharField(
         max_length=25, required=False, label='First Name')
     last_name = forms.CharField(
@@ -20,6 +23,12 @@ class CustomSignupForm(SignupForm):
 
 
 class BookingForm(forms.ModelForm):
+    """
+    Create a custom Booking Form allowing users to select room, date, 
+    start time, end time.
+    Widgets allow users to choose a date from a calendar and a time from a 
+    dropdown form. 
+    """
     class Meta:
         model = Booking
         fields = ['room', 'date', 'start_time', 'end_time']

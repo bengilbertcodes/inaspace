@@ -10,6 +10,9 @@ ROOM_TYPE = [
 
 
 class Room(models.Model):
+    """
+    Table holding data about bookable rooms
+    """
     room_id = models.AutoField(primary_key=True)
     room_number = models.CharField(max_length=10, unique=True)
     capacity = models.PositiveIntegerField()
@@ -25,6 +28,9 @@ class Room(models.Model):
 
 
 class Booking(models.Model):
+    """
+    Table holding bookings made by users
+    """
     booking_id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
