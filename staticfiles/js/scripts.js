@@ -97,14 +97,14 @@ $(document).ready(function () {
         'timeFormat': 'H:i',
         'step': 15,
         'minTime': '08:00',
-        'maxTime': '21:45'
+        'maxTime': '21:45',
     });
 
     $('#id_end_time').timepicker({
         'timeFormat': 'H:i',
         'step': 15,
         'minTime': '08:15',
-        'maxTime': '22:00'
+        'maxTime': '22:00',
     });
 
     // Set end_time default to start_time + 1 hour
