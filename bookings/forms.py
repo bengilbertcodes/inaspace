@@ -49,15 +49,17 @@ class BookingForm(forms.ModelForm):
                 # Ensure date cannot be in the past
                 'min': datetime.now().date().strftime('%Y-%m-%d')
             }),
-            'start_time': forms.TimeInput(attrs={
+            'start_time': forms.TextInput(attrs={
                 'class': 'form-control',
                 'step': 900,  # 15 minutes
-                'type': 'time',
+                'type': 'text',
+                'placeholder': 'hh:mm'
             }),
-            'end_time': forms.TimeInput(attrs={
+            'end_time': forms.TextInput(attrs={
                 'class': 'form-control',
                 'step': 900,  # 15 minutes
-                'type': 'time',
+                'type': 'text',
+                'placeholder': 'hh:mm'
             }),
         }
 
