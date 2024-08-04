@@ -201,6 +201,7 @@ Note: 3 other user stories have been added to Future Development Ideas below.
 - User to be able to select room type from drop down then see the room numbers corresponding to that room type. Require additional table in database (room_type with a primary key of room_type_id which will join to rooms table).
 - Unavailable room times not visible to the user when selecting times. I have not been able to implement this important feature at this time.
 - User can request equipment for a room - office equipment or instruments for a rehearsal for example.
+- I didn't feel the need to add more clutter onto the pages so left out a how to use section. This could easily be added as a modal and would be particularly useful should the functionality of the site increase. Styling has deliberately been kept simple to allow the app to work as efficiently as possible. If a company wished to use this app it would be easy to adpat it for their own branding/colours/themse etc.  
 
 
 ### Technologies Used
