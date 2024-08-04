@@ -181,11 +181,12 @@ Lighthouse tests using Chrome Dev tools in an incognito window.
 </table>
 
 ## Automated testing
-The functionalities tested in bookings/test_forms.py were: 
-- All user input fields in CustomSignupForm
-- User input fields for BookingForm <br>
-<img src="docs/testing_images/CustomSignupForm_test.webp" height="100px" alt="CustomSignupForm Results">
+The functionalities tested can be seen in:
+ - home/test_views.py
+ - bookings/test_forms.py
+ - bookings/test_views.py
 
+All tests pass.
 
 ## Browser Compatibility
 Below are the browsers that have been tested:
