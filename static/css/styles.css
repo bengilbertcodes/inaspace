@@ -47,16 +47,12 @@ footer {
 	margin: 5% auto;
 }
 
+.btn-size {
+	flex: 1;
+}
+
 a {
 	text-decoration: none;
-}
-
-.booking-form input {
-	max-width: 12rem;
-}
-
-.booking-form select {
-	max-width: 12rem;
 }
 
 .alert-container {
@@ -82,6 +78,10 @@ a {
 }
 
 .bookings-list-container {
+	width: 100%;
+}
+
+#bookings-table {
 	width: 100%;
 }
 
