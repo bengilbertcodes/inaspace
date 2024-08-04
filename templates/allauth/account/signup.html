@@ -14,25 +14,29 @@
 				<form id="signup_form" method="post" action="{% url 'account_signup' %}">
 					{% csrf_token %}
 					<div class="row">
-						<div class="col-md-6">
-							<!-- First column fields -->
-							{% for field in form %}
-							{% if forloop.counter0|divisibleby:2 %}
-							<div class="mb-3">
-								{{ field|as_crispy_field }}
+						<div class="col-12 col-md-6" id="left-column">
+							<!-- Left column fields -->
+							<div class="mb-3 form-field" data-field="email">
+								{{ form.email|as_crispy_field }}
 							</div>
-							{% endif %}
-							{% endfor %}
+							<div class="mb-3 form-field" data-field="first_name">
+								{{ form.first_name|as_crispy_field }}
+							</div>
+							<div class="mb-3 form-field" data-field="password1">
+								{{ form.password1|as_crispy_field }}
+							</div>
 						</div>
-						<div class="col-md-6">
-							<!-- Second column fields -->
-							{% for field in form %}
-							{% if not forloop.counter0|divisibleby:2 %}
-							<div class="mb-3">
-								{{ field|as_crispy_field }}
+						<div class="col-12 col-md-6" id="right-column">
+							<!-- Right column fields -->
+							<div class="mb-3 form-field" data-field="username">
+								{{ form.username|as_crispy_field }}
 							</div>
-							{% endif %}
-							{% endfor %}
+							<div class="mb-3 form-field" data-field="last_name">
+								{{ form.last_name|as_crispy_field }}
+							</div>
+							<div class="mb-3 form-field" data-field="password2">
+								{{ form.password2|as_crispy_field }}
+							</div>
 						</div>
 					</div>
 					{% if redirect_field_value %}
