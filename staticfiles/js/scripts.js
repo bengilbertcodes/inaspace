@@ -4,6 +4,39 @@
 * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-bare/blob/master/LICENSE)
 */
 
+document.addEventListener('DOMContentLoaded', function () {
+		function reorderFields() {
+			if (window.innerWidth < 768) {
+				// Small screen
+				const order = ['email', 'username', 'first_name', 'last_name', 'password1', 'password2']; // Custom order for small screens
+				order.forEach(function (fieldName) {
+					const element = document.querySelector(`.form-field[data-field="${fieldName}"]`);
+					if (element) {
+						document.querySelector('#left-column').appendChild(element);
+					}
+				});
+			} else {
+				// Large screen, reset order
+				const leftColumnFields = ['email', 'first_name', 'password1'];
+				const rightColumnFields = ['username', 'last_name', 'password2'];
+				leftColumnFields.forEach(function (fieldName) {
+					const element = document.querySelector(`.form-field[data-field="${fieldName}"]`);
+					if (element) {
+						document.querySelector('#left-column').appendChild(element);
+					}
+				});
+				rightColumnFields.forEach(function (fieldName) {
+					const element = document.querySelector(`.form-field[data-field="${fieldName}"]`);
+					if (element) {
+						document.querySelector('#right-column').appendChild(element);
+					}
+				});
+			}
+		}
+
+		window.addEventListener('resize', reorderFields);
+		reorderFields(); // Initial call
+	});
 
 // to handle timer for django messages
 document.addEventListener('DOMContentLoaded', function() {
