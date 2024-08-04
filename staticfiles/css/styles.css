@@ -89,13 +89,8 @@ a {
 	width: 100%;
 }
 
-.table {
+tbody {
 	font-size: small;
-}
-
-.action-buttons {
-	font-size: small;
-	width: 50%;
 }
 
 .delete-container {

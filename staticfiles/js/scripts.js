@@ -22,41 +22,43 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 $(document).ready(function () {
-    // Initialize DataTable
-    $('#bookings-table').DataTable();
+	// Custom date sorting plugin
+	$.fn.dataTable.ext.type.order['date-dd-mmm-yyyy-pre'] = function (d) {
+		var parts = d.split(' ');
+		var day = parts[0];
+		var month = parts[1];
+		var year = parts[2];
+		var months = {
+			"Jan": "01",
+			"Feb": "02",
+			"Mar": "03",
+			"Apr": "04",
+			"May": "05",
+			"Jun": "06",
+			"Jul": "07",
+			"Aug": "08",
+			"Sep": "09",
+			"Oct": "10",
+			"Nov": "11",
+			"Dec": "12"
+		};
+		return Date.parse(year + '-' + months[month] + '-' + day);
+	};
+	
+	// Check if DataTable is already initialized
+	if (!$.fn.DataTable.isDataTable('#bookings-table')) {
+		// Initialize DataTable
+		$('#bookings-table').DataTable({
+			"columnDefs": [
+					{ "type": "date-dd-mmm-yyyy", "targets": 1 },
+					{ "orderable": false, "targets": [3, 4] }
+				],
+				"order": [[1, 'asc']]
+			});
+		}
+	});
 
-    // Custom date sorting plugin
-    $.fn.dataTable.ext.type.order['date-dd-mmm-yyyy-pre'] = function (d) {
-        var parts = d.split(' ');
-        var day = parts[0];
-        var month = parts[1];
-        var year = parts[2];
-        var months = {
-            "Jan": "01",
-            "Feb": "02",
-            "Mar": "03",
-            "Apr": "04",
-            "May": "05",
-            "Jun": "06",
-            "Jul": "07",
-            "Aug": "08",
-            "Sep": "09",
-            "Oct": "10",
-            "Nov": "11",
-            "Dec": "12"
-        };
-        return Date.parse(year + '-' + months[month] + '-' + day);
-    };
-
-    // Initialize DataTable with custom date sorting
-    $('#bookings-table').DataTable({
-        "columnDefs": [
-            { "type": "date-dd-mmm-yyyy", "targets": 1 },
-            { "orderable": false, "targets": [3, 4] }
-        ],
-        "order": [[1, 'asc']]
-    });
-
+$(document).ready(function () {
     // Initialize time pickers
     $('#id_start_time').timepicker({
         'timeFormat': 'H:i',
@@ -85,7 +87,7 @@ $(document).ready(function () {
     $('#id_date').on('change', function () {
         var selectedDate = new Date($(this).val());
         var today = new Date();
-        today.setHours(0, 0, 0, 0); // Normalize today's date to midnight
+        today.setHours(0, 0, 0, 0); // Set today's date to midnight
 
         if (selectedDate < today) {
             alert('Date cannot be in the past');

@@ -47,10 +47,6 @@ footer {
 	margin: 5% auto;
 }
 
-.booking-form {
-	display: ruby-text;
-}
-
 a {
 	text-decoration: none;
 }
@@ -87,15 +83,6 @@ a {
 
 .bookings-list-container {
 	width: 100%;
-}
-
-.table {
-	font-size: small;
-}
-
-.action-buttons {
-	font-size: small;
-	width: 50%;
 }
 
 .delete-container {
