@@ -1,4 +1,4 @@
-/* custom css */
+/* General styles */
 html,
 body {
 	height: 100%;
@@ -47,14 +47,22 @@ footer {
 	margin: 5% auto;
 }
 
+/* Buttons and links */
 .btn-size {
 	flex: 1;
+}
+
+.signout-btn {
+	width: 200px;
+	display: block;
+	margin: 0 auto;
 }
 
 a {
 	text-decoration: none;
 }
 
+/* Messages styles */
 .alert-container {
 	width: 100%;
 	display: flex;
@@ -73,10 +81,7 @@ a {
 	position: relative;
 }
 
-.dt-input {
-	margin-left: 4px;
-}
-
+/* Bookings styles */
 .bookings-list-container {
 	width: 100%;
 }
