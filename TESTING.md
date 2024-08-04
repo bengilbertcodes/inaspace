@@ -184,6 +184,7 @@ Lighthouse tests using Chrome Dev tools in an incognito window.
 ## Notes
 - The calendar functions well. It is not possible for users to book rooms on 29th February if not a leap year, for example.
 - It is possible for a user to book multiple rooms at the same time - I have left this feature in as it could be useful by an admin to book multiple rooms for colleagues/students etc. 
+- 'Tabbing' (tabindex) through registration form works up until password 1, then tab moves to 'inaspace' in the navbar. I haven't found a solution to this yet.
 
 ## Automated testing
 The functionalities tested can be seen in:

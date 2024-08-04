@@ -2,17 +2,27 @@ from django import forms
 from allauth.account.forms import SignupForm
 from django.core.exceptions import ValidationError
 from .models import Booking
-from datetime import datetime, timedelta, time
+from datetime import datetime, timedelta
 
 
 class CustomSignupForm(SignupForm):
     """
     Add first_name and last_name fields to enhance Allauth's signup form
     """
+    email = forms.EmailField(widget=forms.EmailInput(attrs={'tabindex': '1'}))
+    username = forms.CharField(widget=forms.TextInput(attrs={'tabindex': '2'}))
     first_name = forms.CharField(
-        max_length=25, required=False, label='First Name')
+        max_length=25, required=False, label='First Name',
+        widget=forms.TextInput(attrs={'tabindex': '3'})
+    )
     last_name = forms.CharField(
-        max_length=25, required=False, label='Last Name')
+        max_length=25, required=False, label='Last Name',
+        widget=forms.TextInput(attrs={'tabindex': '4'})
+    )
+    password1 = forms.CharField(
+        widget=forms.PasswordInput(attrs={'tabindex': '5'}))
+    password2 = forms.CharField(
+        widget=forms.PasswordInput(attrs={'tabindex': '6'}))
 
     def save(self, request):
         user = super(CustomSignupForm, self).save(request)
