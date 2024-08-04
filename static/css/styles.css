@@ -52,10 +52,14 @@ footer {
 	flex: 1;
 }
 
-.signout-btn {
-	width: 200px;
+.custom-btn {
+	width: 100px;
 	display: block;
 	margin: 0 auto;
+}
+
+.dropdown-btn {
+	height: 25px;
 }
 
 a {

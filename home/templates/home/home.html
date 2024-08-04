@@ -28,7 +28,7 @@
 				<td>{{ booking.end_time|time:"H:i" }}</td>
 				<td class="text-center">
 					<div class="dropdown">
-						<button class="btn btn-info btn-sm dropdown-toggle" type="button" id="dropdownMenuButton{{ forloop.counter }}"
+						<button class="btn btn-info btn-sm dropdown-toggle dropdown-btn" type="button" id="dropdownMenuButton{{ forloop.counter }}"
 							data-bs-toggle="dropdown" aria-expanded="false">
 						</button>
 						<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton{{ forloop.counter }}">
@@ -43,8 +43,8 @@
 	</table>
 	</div>
 	<div class="container">
-		<div class="d-grid gap-1 col-6 mx-auto">
-			<a class="btn btn-sm btn-secondary" href="{% url 'booking' %}">Book a Room</a>
+		<div class="d-grid col-8 mx-auto">
+			<a class="btn btn-sm btn-secondary custom-btn" href="{% url 'booking' %}">Book a Room</a>
 		</div>
 	</div>
 </div>
