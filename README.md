@@ -163,6 +163,10 @@ Note: 3 other user stories have been added to Future Development Ideas below.
 [Click here to view Kanban board on Github](https://github.com/users/bengilbertcodes/projects/6/views/1)
 
 ### Future Features
+- Add Contact the Developer app
+- Add Frequently Asked Questions app
+- User to be able to select room type from drop down then see the room numbers corresponding to that room type. Require additional table in database (room_type with a primary key of room_type_id which will join to rooms table).
+- Unavailable room times not visible to the user when selecting times. I have not been able to implement this important feature at this time.
 
 ### Technologies Used
 

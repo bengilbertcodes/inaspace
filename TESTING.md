@@ -75,6 +75,7 @@ Lighthouse tests using Chrome Dev tools in an incognito window.
                 <li>Navigate to registration page</li>
                 <li>Fill in user details</li>
                 <li>Submit form</li>
+				<li>Alerts for any incomplete fields are displayed</li>
             </ol>
         </td>
         <td>User account is created and confirmation message is displayed</td>
@@ -180,6 +181,10 @@ Lighthouse tests using Chrome Dev tools in an incognito window.
     </tr>
 </table>
 
+## Notes
+- The calendar functions well. It is not possible for users to book rooms on 29th February if not a leap year, for example.
+- It is possible for a user to book multiple rooms at the same time - I have left this feature in as it could be useful by an admin to book multiple rooms for colleagues/students etc. 
+
 ## Automated testing
 The functionalities tested can be seen in:
  - home/test_views.py
@@ -188,8 +193,18 @@ The functionalities tested can be seen in:
 
 All tests pass.
 
-## Browser Compatibility
-Below are the browsers that have been tested:
+## Browser and OS Compatibility
+Browsers that have been tested:
+- Chrome
+- Firefox
+- Safari
+- Edge
+
+Operating Systems
+- MacOS Sonoma
+- Windows 10
+- iOS
+- Android
 
 ## Responsiveness 
 The website's responsiveness has been tested using Google Chrome Developer Tools. To ensure compatibility across different devices, various screen resolutions were simulated.
