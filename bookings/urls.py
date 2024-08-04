@@ -1,9 +1,9 @@
 from django.urls import path
 from bookings.views import (BookingView, BookingSuccessView,
-BookingDeleteView, BookingEditView)
+                            BookingDeleteView, BookingEditView)
 
 urlpatterns = [
-    path('bookings/', BookingView.as_view(),name='booking'),
+    path('bookings/', BookingView.as_view(), name='booking'),
     path('booking_success/', BookingSuccessView.as_view(),
          name='booking_success'),
     path('delete/<int:pk>/', BookingDeleteView.as_view(),

@@ -24,10 +24,10 @@ class CustomSignupForm(SignupForm):
 
 class BookingForm(forms.ModelForm):
     """
-    Create a custom Booking Form allowing users to select room, date, 
+    Create a custom Booking Form allowing users to select room, date,
     start time, end time.
-    Widgets allow users to choose a date from a calendar and a time from a 
-    dropdown form. 
+    Widgets allow users to choose a date from a calendar and a time from a
+    dropdown form.
     """
     class Meta:
         model = Booking
