@@ -2,7 +2,7 @@ from django import forms
 from allauth.account.forms import SignupForm
 from django.core.exceptions import ValidationError
 from .models import Booking
-from datetime import datetime, timedelta,
+from datetime import datetime, timedelta
 
 
 class CustomSignupForm(SignupForm):
