@@ -196,7 +196,6 @@ The functionalities tested can be seen in:
 All tests pass.
 
 ## Unresolved Bugs
-- The overlapping bookings validation message doesn't display. This was working up until day before submission so I have not been able to find a fix by the deadline.
 - On Android devices, the timepicker disappears when the keyboard overlay renders. Times can still be manually typed and a longer press on the input field can return the timepicker but this is not an ideal solution. I intend to fix this for future builds.
 
 

@@ -18,6 +18,7 @@
 		<div class="container border border-3 border-secondary">
 			<form class="form" method="post">
 				{% csrf_token %}
+				{{ form.non_field_errors }}
 				<div class="row">
 					{% for field in form %}
 					<div class="col-md">

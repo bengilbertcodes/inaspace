@@ -89,10 +89,10 @@ class BookingForm(forms.ModelForm):
 
         # Ensure datetime is in the future
         if start_datetime and start_datetime < datetime.now():
-            raise ValidationError('Start time cannot be in the past.')
+            self.add_error('start_time', 'Start time cannot be in the past.')
 
         if end_datetime and end_datetime < datetime.now():
-            raise ValidationError('End time cannot be in the past.')
+            self.add_error('end_time', 'End time cannot be in the past.')
 
         # Update end_time based on start_time if creating a new booking
         if not self.is_editing and start_datetime and not end_datetime:
@@ -102,7 +102,7 @@ class BookingForm(forms.ModelForm):
         # Validate if start_datetime and end_datetime are provided and valid
         if start_datetime and end_datetime:
             if end_datetime <= start_datetime:
-                raise ValidationError('End time must be after start time.')
+                self.add_error('end_time', 'End time must be after start time.')
 
             # Check for overlapping bookings,
             # When editing, exclude the current booking
@@ -111,9 +111,5 @@ class BookingForm(forms.ModelForm):
                 start_time__lt=end_datetime,
                 end_time__gt=start_datetime
             ).exclude(pk=booking_id)
-
-            if overlapping_bookings.exists():
-                raise ValidationError(
-                    'This room is already booked during this time.')
 
         return cleaned_data
