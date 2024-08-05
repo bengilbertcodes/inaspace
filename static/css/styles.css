@@ -98,7 +98,7 @@ a {
 	width: 50%;
 }
 
-.errorList {
+.errorList li {
 	color: white;
 	background-color: red;
 	opacity: 80%;
