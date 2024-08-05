@@ -97,3 +97,9 @@ a {
 .delete-container {
 	width: 50%;
 }
+
+.errorList {
+	color: white;
+	background-color: red;
+	opacity: 80%;
+}
