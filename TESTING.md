@@ -196,8 +196,6 @@ The functionalities tested can be seen in:
 All tests pass.
 
 ## Unresolved Bugs
-- Start Time and End Time are currently text fields allowing text entry. I'd like to disable this and use 'useSelect' in timepicker. I have ommited this change as I was unable to fix the styling to match the rest of the project.
-- Currently the Delete Success message doesn't display. The delete function works as expected other than this.
 - The overlapping bookings validation message doesn't display. This was working up until day before submission so I have not been able to find a fix by the deadline.
 - On Android devices, the timepicker disappears when the keyboard overlay renders. Times can still be manually typed and a longer press on the input field can return the timepicker but this is not an ideal solution. I intend to fix this for future builds.
 
